@@ -40,21 +40,21 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
       <main className="pb-20">
         {/* Category Hero */}
-        <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
+        <section className="relative min-h-[60vh] lg:min-h-[50vh] flex items-center justify-center pt-32 pb-20">
           <div className="absolute inset-0 z-0">
-             <Image
-                src={`/img/products/home-gallery/${categoria}.webp`}
-                alt={categoryData.title}
-                fill
-                className="object-cover brightness-[0.4]"
-                priority
-             />
+            <Image
+              src={`/img/products/home-gallery/${categoria}.webp`}
+              alt={categoryData.title}
+              fill
+              className="object-cover brightness-[0.4]"
+              priority
+            />
           </div>
-          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-work-sans text-white drop-shadow-lg">
+          <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-work-sans text-white drop-shadow-lg">
               {categoryData.title}
             </h1>
-            <div className="space-y-4 text-lg md:text-xl text-gray-200 font-light drop-shadow-md">
+            <div className="space-y-4 text-base md:text-lg lg:text-xl text-gray-200 font-light drop-shadow-md">
               {categoryData.description.map((desc, idx) => (
                 <p key={idx}>{desc}</p>
               ))}
@@ -66,10 +66,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         <div className="container mx-auto px-4 md:px-8 mt-16">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {categoryData.items.map((product, index) => (
-              <ProductCard 
-                key={index} 
-                product={product} 
-                categorySlug={categoria} 
+              <ProductCard
+                key={index}
+                product={product}
+                categorySlug={categoria}
               />
             ))}
           </div>
