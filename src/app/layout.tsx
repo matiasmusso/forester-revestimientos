@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Open_Sans, Roboto, Work_Sans } from "next/font/google";
 import Script from "next/script";
-import "./globals.css";
+import StyledComponentsRegistry from "@/lib/registry";
+import { GlobalStyle } from "./layout.styles";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -71,16 +72,17 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${openSans.variable} ${roboto.variable} ${workSans.variable} antialiased`}
-      >
-        <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MB43CRC4" height="0" width="0" style={{display:"none", visibility:"hidden"}}></iframe>
-        </noscript>
-        <noscript>
-          <img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=1234678734855874&ev=PageView&noscript=1"/>
-        </noscript>
-        {children}
+      <body className={`${openSans.variable} ${roboto.variable} ${workSans.variable}`}>
+        <StyledComponentsRegistry>
+          <GlobalStyle />
+          <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MB43CRC4" height="0" width="0" style={{display:"none", visibility:"hidden"}}></iframe>
+          </noscript>
+          <noscript>
+            <img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=1234678734855874&ev=PageView&noscript=1"/>
+          </noscript>
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
